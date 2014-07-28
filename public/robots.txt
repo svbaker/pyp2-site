@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /secure/cart
+Disallow: /secure/checkout
+Disallow: /order_confirmation
+Disallow: /404
+Disallow: /500

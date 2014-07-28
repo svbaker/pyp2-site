@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{title}}</title>
+
+<link rel="stylesheet" href="/css/global.css" type="text/css">
+<link rel="stylesheet" href="/css/cart.css" type="text/css">
+<link rel="shortcut icon" href="/images/favicon.ico">
+
+<script type="text/javascript" src="/js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="/js/env.js"></script>
+<script type="text/javascript" src="/js/global.js"></script>
+
+{{{block 'localscripts'}}}
+
+<!--[if lte IE 8]>
+<link href="/css/ie.css" rel="stylesheet" />
+<script type="text/javascript" src="/js/json3.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+
+{{> header}}
+
+<div class="global_page_container">
+
+	{{> menu}}
+
+	<div id="global_content_container">
+		{{{body}}}
+	</div>
+
+	<div class="global_clearfix"></div>
+	<div class="global_footer">
+		{{> footer}}
+	</div>
+
+</div>
+
+</body>
+</html>

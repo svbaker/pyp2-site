@@ -1,0 +1,94 @@
+{{!< simple}}
+
+{{#contentFor 'localscripts'}}
+<script type='text/javascript' src='/js/spin.min.js'></script>
+<script type='text/javascript' src='/js/jquery.form.min.js'></script>
+<script type='text/javascript' src='/js/contest-submission.js'></script>
+<link rel="stylesheet" href="/css/contest-submission.css" type="text/css">
+{{/contentFor}}
+
+<div id="global_content_pane">
+	<div class="global_wide_main_window">
+
+		<div class="form-container">
+			<div style="margin: 12px">
+
+				<div class="header-container" style="background: rgba(225, 225, 225, .5); padding-left: 6px; -webkit-border-radius: 5px; border-radius: 5px;">
+					<h1>Submit your contest entry here!</h1>
+				</div>
+
+				<div class="section">
+				<h2 class="formTitle">Your contact information</h2>
+					<div class="section-inner">
+						<label>Your Name:</label>
+						<input class="requiredField" id="contest_name">
+						<div class="clearfix"></div>
+						<div id="contest_name-msg" class="fieldValidation_msg">Name is required.</div>
+
+						<label>Email:</label>
+						<input class="requiredField" id="contest_email">
+						<div class="clearfix"></div>
+						<div id="contest_email-msg" class="fieldValidation_msg">Valid Email is required.</div>
+
+						<label>Retype Email:</label>
+						<input class="requiredField" id="contest_email2">
+						<div class="clearfix"></div>
+						<div id="contest_email2-msg" class="fieldValidation_msg">Email entries must match.</div>
+
+						<label>Phone # (optional):</label>
+						<input id="contest_phone">
+						<div class="clearfix"></div>
+
+					</div>
+				</div>
+
+				<div class="section">
+					<h2 class="formTitle">Your contest entry</h2>
+					<div class="section-inner">
+						<label>Breed:</label>
+						<select class="requiredField" id="contest_breed">
+							{{breeds_menu breeds}}
+						</select>
+						<div class="clearfix"></div>
+						<div id="contest_breed-msg" class="fieldValidation_msg">Please select a breed.</div>
+
+						<label>Photo:</label>
+
+						<div class="image-box" id="image_add">
+						<form id="uploadForm" method="post" enctype="multipart/form-data" action="/contestEntry">
+							<div class="upload-container">
+								<input class="image-upload" type="file" id="userPhotoInput" name="userPhoto" accept="image/*"/>
+							</div>
+
+							<div class="uploadBox">
+								<span class="button-add"></span><span class="photo-caption">Add Photo</span>
+							</div>
+
+							<div class="removeBox">
+								<a href="#" class="button-remove"></a>
+							</div>
+
+							<div class="loading-container" id="loading_pane"></div>
+						</form>
+						</div>
+
+						<div class="clearfix"></div>
+						<div id="photo-msg" class="fieldValidation_msg">Upload your photo by clicking the box above.</div>
+
+						<div class="validation_message" id="contest_status_msg">
+							<span>We're missing some information.&nbsp;&nbsp;&nbsp;Please check the fields in red above.</span>
+						</div>
+
+						<div class="contest_button_row">
+							<a id="formSubmit" href="#" class="global_button global_button_enlarge">Submit Contest Entry</a>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div style="clear: both;"></div>
+
+	</div>
+</div>

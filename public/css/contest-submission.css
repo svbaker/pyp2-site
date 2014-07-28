@@ -1,0 +1,240 @@
+.clearfix {
+	clear: both;
+}
+
+.form-container {
+	float: left;
+	width: 100%;
+	background-image:url('/images/green-bg.jpg');
+	background-repeat:no-repeat;
+	background-size: cover;
+}
+
+.header-container {
+	margin: 18px 0;
+	position: relative;
+}
+
+.section {
+	border: 1px solid #d9d9d9;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	background-color: #fff;
+	margin-bottom: 24px;
+	color: #333;
+}
+
+.section-inner {
+	padding: 10px 10px;
+	color: #333;
+	margin-top: 12px;
+}
+
+.button {
+    border: 1px solid #006;
+    background: #93c9e3;
+    padding: 2px 6px;
+    font-weight: bold;
+    font-size: 12px;
+    color: #242;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.button:hover {
+    border: 1px solid #00c;
+    background: #a3d9f3;
+    cursor: pointer;
+}
+
+.section-inner label {
+	display: block;
+	float: left;
+	width: 146px;
+	font-size: 16px;
+	line-height: 36px;
+	text-align: right;
+	margin-right: 12px;
+}
+
+.section-inner input {
+	width: 368px;
+	padding: 6px;
+	font-size: 16px;
+	margin-bottom: 12px;
+}
+
+.section-inner select {
+	padding: 6px;
+	font-size: 16px;
+	margin: 7px 0 0 0;
+}
+
+.formTitle {
+	display: block;
+	position: relative;
+	font-weight: normal;
+	font-size: 16px;
+	text-shadow: 0 1px 0 #f5f5f1;
+	border-top: 1px solid #f5f5f1;
+	border-bottom: 1px solid #d9d9d9;
+	-webkit-border-radius: 4px 4px 0 0;
+	-moz-border-radius: 4px 4px 0 0;
+	border-radius: 4px 4px 0 0;
+	background: #eaeae3;
+	padding: 10px 15px;
+	color: #333;
+	margin: 0;
+	text-align: left;
+}
+
+.uploadBox {
+	float: left;
+	background: #fff url(/images/add_bg.png) scroll 0 0;
+	background-repeat: repeat;
+	/*
+	width: 90px;
+	height: 59px;
+	*/
+	width: 380px;
+	height: 285px;
+	display: block;
+	padding-top: 8px;
+	text-transform: uppercase;
+	font-size: 10px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	color: #0192b5;
+	z-index: 0;
+}
+
+.removeBox {
+	display: none;
+	background-repeat: no-repeat;
+	float: left;
+	width: 380px;
+	height: 285px;
+	padding-top: 8px;
+	text-transform: uppercase;
+	font-size: 10px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	color: #0192b5;
+	z-index: 0;
+}
+
+.button-add {
+	margin: 0 0 0 10px;
+	background: transparent url(/images/add_button.png);
+	display: block;
+	float: left;
+	width: 28px;
+	height: 28px;
+}
+
+.button-remove {
+	display: block;
+	cursor: pointer;
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	background: transparent url(/images/remove_button.png) no-repeat;
+	top: 8px;
+	left: 10px;
+	z-index: 999;
+}
+
+.photo-caption {
+	display: block;
+	float: left;
+	margin: 10px 0 0 10px;
+	text-transform: uppercase;
+	font-size: 10px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #0192b5;
+}
+
+.image-upload {
+	z-index: 9999;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+	font-size: 55px;
+	position: relative;
+	height: 268px;
+	float: right;
+	cursor: pointer;
+}
+
+.upload-container {
+	position: absolute;
+	z-index: 999;
+	top: 5px;
+	text-align: right;
+	overflow: hidden;
+	width: 380px;
+	height: 285px;
+	cursor: pointer;
+}
+
+.loading-container {
+	position: absolute;
+	z-index: 1000;
+	top: 5px;
+	text-align: right;
+	overflow: hidden;
+	width: 380px;
+	height: 285px;
+	background-color: #ccc;
+	display: none;
+}
+
+.image-box {
+	display: inline;
+	list-style: none;
+	position: relative;
+	float: left;
+	padding: 5px;
+	border: 1px solid #dedede;
+	margin: 0 0 32px 0;
+	background: #fff;
+	height: 285px;
+	width: 380px;
+	overflow: hidden;
+}
+
+.contest_button_row {
+	width: 100%;
+	margin: 8px 0 12px 0;
+	text-align: center;
+}
+
+.validation_message {
+	display: none;
+	background-color: #b42;
+	color: #feb;
+	font-weight: bold;
+	font-size: 14px;
+	margin: 0 8px 0 8px;
+	border: 1px solid #421;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-mozilla-border-radius: 5px;
+}
+
+.validation_message span {
+	display: block;
+	padding: 6px 24px;
+}
+
+.fieldValidation_msg {
+	display: none;
+	margin: -6px 0 12px 164px;
+	color: #d00;
+	font-size: 14px;
+	font-style: italic;
+}

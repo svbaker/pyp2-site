@@ -1,0 +1,69 @@
+{{!< order}}
+
+{{#contentFor 'localscripts'}}
+<script type="text/javascript" src="/js/cart.js"></script>
+{{/contentFor}}
+
+<div id="global_content_container">
+
+	<div id="global_content_pane">
+		<div class="global_wide_main_window">
+
+			<div class="cartpage_section" style="margin-top: 0;">
+				<div class="cartpage_content_container">
+				All products are shipped within 48 hours via USPS. If you need priority shipping, email us and we will do our best to accommodate your needs. Shipping in the United States is a flat $2.95 per order. International shipping is $6.95 per order, plus $1 per item shipped.
+				</div>
+			</div>
+
+			<div class="cartpage_section">
+				<h2>Items in your cart:</h2>
+				<div class="cartpage_content_container" id="cart">
+					<div class="cartpage_cart_table_container">
+						<table width=100% class="cartpage_cartTable">
+							<thead>
+								<tr>
+									<th class="cartpage_qty_col">Qty&nbsp;</th>
+									<th class="cartpage_item_col">Item</th>
+									<th>Price</th><th>Amount</th>
+								</tr>
+							</thead>
+							<tbody class="global_whitepageLinks">
+							</tbody>
+						</table>
+						<div class="cartpage_cartButtons">
+							<a id="update_cart" href="#" class="global_control_button global_control_button_enlarge">Update Cart</a>
+						</div>
+						<div class="global_clearfix"></div>
+
+
+						<div style="text-align: left; margin: 24px 0 6px 4px;">
+							Ship to: <select id="cartForm_shipto_country" class="cartpage_form_shipCountry">
+								{{countries_menu countries}}
+							</select>
+						</div>
+
+						<div style="text-align: left; margin: 2px 0 2px 52px;">
+							<input type="checkbox" id="cartForm_gift_status" value="Y" name="cartForm_gift_status" style="margin-right: 6px;">This will be a gift
+						</div>
+
+					</div>
+
+					<div id="giftMessage_container" style="margin-top: 12px; display: none;">
+						<label class="indented_cartLabel" for="cartForm_gift_message">Gift Card Message:<br><span class="labelNote">(Optional)</span></label>
+						<textarea id="cartForm_gift_message" class="postData cartForm_text_label" rows=3 cols=42></textarea>
+					</div>
+
+					<div class="cartpage_formButton_container">
+						<a href="#" class="global_button global_button_enlarge backNav">Continue Shopping</a>
+						<a href="#" class="global_button global_button_enlarge checkout">Complete Checkout</a>
+					</div>
+
+				</div>
+			</div>
+
+
+
+		</div>
+	</div>
+
+</div>
