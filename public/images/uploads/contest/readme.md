@@ -1,1 +1,0 @@
-Contest photo uploads go here

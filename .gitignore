@@ -5,6 +5,7 @@ env.json
 ssl/
 public/images/uploads/*.*
 !public/images/uploads/nada.json
+public/images/uploads/contest/
 public/images/site/products/*.*
 !public/images/site/products/nada.json
 public/images/logo-stock/
