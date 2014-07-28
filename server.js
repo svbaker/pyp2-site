@@ -1,3 +1,6 @@
+// Pamperyourpoultry,com Version 2.0
+// Sean V. Baker - sean.baker@bb-technologies.com
+
 var http = require("http");
 var https = require('https');
 var exec = require('child_process').exec;
