@@ -7,6 +7,15 @@ var ORDER_FUNC = {
 
 	init: function() {
 		// Set up function specific event handlers
+		var d = new Date();
+		var sd = new Date();
+		sd.setDate(d.getDate() - 7);
+
+		$('#order_filter_order_start_date').datepicker({showButtonPanel: true});
+		$( "#order_filter_order_start_date" ).datepicker("setDate", formatDateTime(sd));
+
+		$('#order_filter_order_end_date').datepicker({showButtonPanel: true});
+
 	},
 
 	invoice: function(order_num) {

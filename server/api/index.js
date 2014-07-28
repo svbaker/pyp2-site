@@ -842,9 +842,29 @@ var ops = {
 				sql += 'WHERE countries.id = order_header.country_code ';
 
 				for (var prop in post_data.filter_vars) {
-					if (post_data.filter_vars[prop]) {
-						sql += "AND " + prop + " LIKE '%" + post_data.filter_vars[prop] + "%' ";
+
+					switch (prop) {
+
+						case 'order_start_date':
+							if (post_data.filter_vars[prop]) {
+								sql += "AND order_date >= STR_TO_DATE('" + post_data.filter_vars[prop] + "', '%m/%d/%Y') ";
+							}
+							break;
+
+						case 'order_end_date':
+							if (post_data.filter_vars[prop]) {
+								sql += "AND order_date <= STR_TO_DATE('" + post_data.filter_vars[prop] + "', '%m/%d/%Y') ";
+							}
+							break;
+
+						default:
+							if (post_data.filter_vars[prop]) {
+								sql += "AND " + prop + " LIKE '%" + post_data.filter_vars[prop] + "%' ";
+							}
+							break;
+
 					}
+
 				}
 
 				sql += sortString;

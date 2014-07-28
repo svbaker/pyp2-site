@@ -5,9 +5,11 @@
 
 <link rel="stylesheet" href="css/ops_shell.css" type="text/css">
 <link rel="stylesheet" href="css/ops_forms.css" type="text/css">
+<link rel="stylesheet" href="/css/jquery-ui-1.10.4.custom.css">
 <link rel="shortcut icon" href="/images/favicon.ico">
 
 <script type="text/javascript" src="/js/jquery-1.8.2.min.js" ></script>
+<script type="text/javascript" src="/js/jquery-ui-1.10.4.custom.min.js" ></script>
 <script type='text/javascript' src='/js/jquery.form.min.js'></script>
 <script type='text/javascript' src='/js/spin.min.js'></script>
 <script type='text/javascript' src='/ops/js/ops_functions/list_table_specs.js'></script>
@@ -629,6 +631,17 @@
                 <label class="shell_controlPanel" for="order_filter_order_num">Order#:</label>
                 <input class="shell_controlPanel filterField" id="order_filter_order_num" type="text">
             </p>
+
+            <p class="shell_controlPanel">
+                <label class="shell_controlPanel" for="order_filter_start_date">Start:</label>
+                <input class="shell_controlPanel filterField" id="order_filter_order_start_date" type="text">
+            </p>
+
+            <p class="shell_controlPanel">
+                <label class="shell_controlPanel" for="order_filter_end_date">End:</label>
+                <input class="shell_controlPanel filterField" id="order_filter_order_end_date" type="text">
+            </p>
+
             <p class="shell_controlPanel">
                 <select class="shell_controlPanel filterField" id="order_filter_order_status">
                     <option value="">- ALL -</option>

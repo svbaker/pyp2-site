@@ -223,6 +223,7 @@ $(document).ready(function() {
     // Initialize local functions
     BREED_FUNC.init();
     PROD_FUNC.init();
+    ORDER_FUNC.init();
 
 });
 
@@ -294,7 +295,7 @@ function open_func(ops_function, link) {
     if (APP_STATE.current_function) {
         $('#' + APP_STATE.current_function +'FunctionsContainer').hide();
     }
-    
+
     // Get any dynamic menus needed by function
     getMenus(ops_function);
 
@@ -334,6 +335,7 @@ function open_form(ops_function, mode, edit_id) {
         $('#' + ops_function + 'Form').show();
 
         // Get any dynamic menus from server, and pass callback to continue the open process
+
         getMenus(ops_function, function() {
             if (mode == 'INSERT') {
                 // Set form text and hide any fields specific to edit form only
@@ -400,7 +402,7 @@ function open_form(ops_function, mode, edit_id) {
 }
 
 
-// Build dynamic menus for a given function by routing to function-specific coude
+// Build dynamic menus for a given function by routing to function-specific code
 // Execute callback when complete
 function getMenus(ops_function, callback) {
     switch (ops_function) {
@@ -489,7 +491,7 @@ function close_form(ops_function, callback) {
 }
 
 
-// Get list data from server based on c ontrol panel filter data
+// Get list data from server based on control panel filter data
 // Pass mode 'init' to include creation of table header row as well.
 function filterList(ops_function, mode) {
 
@@ -573,8 +575,11 @@ function filterList(ops_function, mode) {
                         applied_col_classes = ' number';
                     }
 
-                    html += '<th class="shell_listTable' + applied_col_classes + '" onclick="addSort(\'' + cols[i].db_field + '\');">';
-                    html += cols[i].col_header;
+                    html += '<th class="shell_listTable' + applied_col_classes + '"';
+                    if (cols[i].db_field) {
+                        html += ' onclick="addSort(\'' + cols[i].db_field + '\');"';
+                    }
+                    html += '>' + cols[i].col_header;
                     html += '</th>';
                 }
             }

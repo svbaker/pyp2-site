@@ -9,6 +9,8 @@ var PROD_FUNC = {
 		// Set up function specific event handlers and settings
 	},
 
+	filter_menus_loaded: false,
+
 	getImgUploadOptions: function() {
 
 		// Set desired thumbnail size here
@@ -132,8 +134,20 @@ var PROD_FUNC = {
                 if (data.status == 'OK') {
                     $('#prod_fields_cat_code').html(data.payload.prod_cat_menu);
                     $('#prod_fields_size').html(data.payload.prod_size_menu);
-					$('#prod_filter_cat_code').html('<option value="">-Category-</option>' + data.payload.prod_cat_menu);
-					$('#prod_filter_size').html('<option value="">-Size-</option>' + data.payload.prod_size_menu);
+
+                    if (!callback) {
+                    	// No callback provided when called from open_func
+                    	// So load control panel menus if not already loaded
+                    	if (!PROD_FUNC.filter_menus_loaded) {
+							$('#prod_filter_cat_code').html('<option value="">-Category-</option>' + data.payload.prod_cat_menu);
+							$('#prod_filter_size').html('<option value="">-Size-</option>' + data.payload.prod_size_menu);
+                    		PROD_FUNC.filter_menus_loaded = true;
+                    	}
+                    } else {
+                    	// Callback is provided from open_form
+                    	// Don't refresh control panel menus
+                    }
+
                     if (callback) {
                         callback();
                     }
