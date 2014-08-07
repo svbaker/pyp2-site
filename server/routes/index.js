@@ -1,4 +1,5 @@
 var api = require('../api');
+var express = require('express');
 
 exports.api = function(server, env_settings) {
 
@@ -16,7 +17,7 @@ exports.api = function(server, env_settings) {
     server.get('/ops/ajax/getProdMenus', api.ops.getProdMenus);
     server.post('/ops/ajax/getProd/:id', api.ops.getProd);
     server.get('/ops/ajax/getInvoice/:order_num', api.ops.getInvoice);
-    server.post('/ops/file-uploader', api.ops.fileUploader);
+    server.post('/ops/file-uploader', express.bodyParser(), api.ops.fileUploader);
 
     // Parse JSON input data into req.ops_post_data:
     server.all('/ops/ajax/*', api.ops.parseInput);
@@ -63,6 +64,11 @@ exports.site = function(server) {
     server.get('/attire', function(req, res) {  
       var context = {title: 'Pampered Poultry - Chicken Attire'};
       res.render('attire', context);
+    });
+
+    server.get('/magnets', function(req, res) {  
+      var context = {title: 'Pampered Poultry - Magnets'};
+      res.render('magnets', context);
     });
 
     server.get('/contact-us', function(req, res) {  

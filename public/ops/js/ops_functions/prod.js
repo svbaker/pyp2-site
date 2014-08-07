@@ -7,14 +7,40 @@ var PROD_FUNC = {
 
 	init: function() {
 		// Set up function specific event handlers and settings
+		$('#prod_fields_cat_code').change(function() {
+			if ($('#prod_fields_cat_code').val() == 'MAGNET') {
+				$('#prod_fields_display_type').val('MEDIUM');
+			} else {
+				$('#prod_fields_display_type').val('SMALL');
+			}
+		});
 	},
 
 	filter_menus_loaded: false,
 
 	getImgUploadOptions: function() {
 
-		// Set desired thumbnail size here
-		var thumbSize = {width: 77, height: 122};
+		var thumbSize, fullSize;
+
+		// Possiblr image sizes
+		var thumbSizes = {
+			SMALL: {width: 77, height: 122},
+			MEDIUM: {width: 154, height: 122}
+		};
+
+		var fullsizes = {
+			SMALL: {width: 606, height: 960},
+			MEDIUM: {width: 909, height: 720}
+		};
+
+		// Set image sizes based on display_type
+        if ($('#prod_fields_display_type').val()) {
+        	thumbSize = thumbSizes[$('#prod_fields_display_type').val()];
+        	fullSize = fullsizes[$('#prod_fields_display_type').val()];
+        } else {
+        	thumbSize = thumbSizes.SMALL;
+        	fullSize = fullsizes.SMALL;
+        }
 
 		return {
 			ops_function: PROD_FUNC.ops_function,
@@ -23,6 +49,7 @@ var PROD_FUNC = {
 			control_code: 'PROD',
 			control_rec_id: APP_STATE.current_function_form_edit_id,
 			thumb_size: thumbSize,
+			full_size: fullSize,
 			styles: {
 			    thumbSize: 'width:' + thumbSize.width + 'px; height:' + thumbSize.height + 'px;',
 			    surroundSize: 'width:' + (3 + thumbSize.width) + 'px; height:' + (3 + thumbSize.height) + 'px;',
@@ -45,23 +72,6 @@ var PROD_FUNC = {
 		// Only allow single size entries for product edits
 		$('#prod_fields_size').removeAttr('multiple');
 		$('#prod_fields_size').attr('size', '1');
-
-		// Set up image upload area
-		$('#prodForm_uploads_list').empty();
-		imgUploadOpts = PROD_FUNC.getImgUploadOptions();
-		imgUploadOpts.control_rec_id = edit_id;
-
-		$('#prodForm_uploads_list').append(genImgUploadHtml(imgUploadOpts));
-
-        UploaderTimerId = setInterval(function() {
-            if($('#' + PROD_FUNC.ops_function + '_userImageInput').val() !== '') {
-                clearInterval(UploaderTimerId);
-                $('#' + PROD_FUNC.ops_function + '_image_uploadForm').submit();
-            }
-        }, 500);
-
-        // Attache submit handler for new file upload form
-        $('#' + PROD_FUNC.ops_function + '_image_uploadForm').submit(imageUploadSubmitFunction);
 
 		// Load edit form from server
 	    $.ajax({
@@ -90,12 +100,31 @@ var PROD_FUNC = {
 	    function populateDOM(formData, uploadsArray) {
 
 	    	var new_li_html = '';
-	    	var imgUploadOpts = PROD_FUNC.getImgUploadOptions();
 
 	    	// Load form data
 	        $('#' + PROD_FUNC.ops_function + 'Form_form').find('input,select,textarea').each(function(i) {
 				$('#' + $(this).attr('id')).val(formData[$(this).attr('id').slice(PROD_FUNC.ops_function.length + 8)]);
 	        });
+
+
+			// Set up image upload area
+			$('#prodForm_uploads_list').empty();
+			imgUploadOpts = PROD_FUNC.getImgUploadOptions();
+			imgUploadOpts.control_rec_id = edit_id;
+
+			$('#prodForm_uploads_list').append(genImgUploadHtml(imgUploadOpts));
+
+	        UploaderTimerId = setInterval(function() {
+	            if($('#' + PROD_FUNC.ops_function + '_userImageInput').val() !== '') {
+	                clearInterval(UploaderTimerId);
+	                $('#' + PROD_FUNC.ops_function + '_image_uploadForm').submit();
+	            }
+	        }, 500);
+
+	        // Attache submit handler for new file upload form
+	        $('#' + PROD_FUNC.ops_function + '_image_uploadForm').submit(imageUploadSubmitFunction);
+	        // ---------------
+
 
 	        // Load any uploaded images
 	        if (uploadsArray) {
@@ -118,6 +147,9 @@ var PROD_FUNC = {
 	            $('#' + PROD_FUNC.ops_function + 'Form_uploads_list > li').slice(imgUploadOpts.max_files).remove();
 
 	        }
+
+	        // Set image size help display
+	        $('#prodForm').find('.img-size-help').html(imgUploadOpts.full_size.width + ' x ' + imgUploadOpts.full_size.height);
 
 	    }
 

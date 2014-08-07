@@ -292,6 +292,10 @@ a.menu_link:hover {
 	background-size: cover;
 }
 
+.global_paper_blue {
+	background-image:url('/images/blue-bg.jpg');
+}
+
 /* Use this when instead of .global_paper_decoration when not using right-hand newsfeed */
 .global_wide_main_window {
 	margin-left: 0;
@@ -307,6 +311,7 @@ a.menu_link:hover {
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 	background: rgba(225, 225, 225, .5);
+	background: rgba(225, 225, 225, .8);
 	margin: 0 0 10px 0;
 	color: #324;
 }

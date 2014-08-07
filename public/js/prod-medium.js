@@ -33,7 +33,7 @@ $(document).ready(function() {
 			}, 300, function() {
 				slideEnabled = true;
 				var cur_slider_index = parseInt(sliderDiv.css('margin-left')) / (-1 * slide_distance);
-				var tot_slider_cnt = sliderDiv.find('.prod_callout').length;
+				var tot_slider_cnt = sliderDiv.find('.prod-medium_callout').length;
 
 				// Check if left/right button disable is needed
 				if (directionMult == 1) {
@@ -92,42 +92,55 @@ function getProducts(cat_code) {
 
 		var html = '';
 		var right_button_class;
+		var prod_cnt = 0;
 
 		for(var prop in products) {
-    		html += '<div class="global_header_section" style="margin-top: 20px;">';
-    		html += '<span>' + prop + ' -</span><span style="font-size: 14px;">' + getSizeText(prop) + '</span></div>';
+			prod_cnt += products[prop].length;
+		}
 
-    		if (products[prop].length < 4) {
-    			right_button_class = ' prod_slideButton_Disabled';
-    		} else {
-    			right_button_class = '';
-    		}
+    	html += '<div class="global_header_section" style="margin-top: 20px;">';
+    	html += '<span>Product Selection</span></div>';
 
-    		html += '<div class="prod_row_container">';
-    		html += '<div class="prod_slideButton prod_slideButtonLeft prod_slideButton_Disabled"><span title="See more chocies" class="prod_chevron_left"></span></div>';
-    		html += '<div class="prod_slideButton prod_slideButtonRight' + right_button_class + '"><span title="See more chocies" class="prod_chevron_right"></span></div>';
-    		html += '<div class="prod_slide_container"><div class="prod_slider">';
+		if (prod_cnt < 4) {
+			right_button_class = ' prod_slideButton_Disabled';
+		} else {
+			right_button_class = '';
+		}
+
+		html += '<div class="prod_row_container">';
+		html += '<div class="prod_slideButton prod_slideButtonLeft prod_slideButton_Disabled"><span title="See more chocies" class="prod_chevron_left"></span></div>';
+		html += '<div class="prod_slideButton prod_slideButtonRight' + right_button_class + '"><span title="See more chocies" class="prod_chevron_right"></span></div>';
+		html += '<div class="prod_slide_container"><div class="prod_slider">';
+
+		for(var prop in products) {
 
     		for (var i = 0; i < products[prop].length; i++) {
-	    		html += '<div class="prod_callout" id="prodID_' + products[prop][i].id + '">';
-	    		html += '<p class="prod_callout_title"><span class="prodSize">' + prop + '</span>';
-	    		html += '<span class="prodDesc">' + products[prop][i].color + '</span>';
-	    		html += '<span class="prodName">' + products[prop][i].name + '</span></p>';
+	    		html += '<div class="prod-medium_callout" id="prodID_' + products[prop][i].id + '">';
+
+	    		// html += '<p class="prod_callout_title"><span class="prodSize">' + prop + '</span>';
+	    		// html += '<span class="prodDesc">' + products[prop][i].color + '</span>';
+	    		// html += '<span class="prodName">' + products[prop][i].name + '</span></p>';
 	    		
 	    		html += '<a class="fancybox" title="' + prop + '-' + products[prop][i].color + '" href="' + products[prop][i].file_url + '">';
-
 	    		html += '<img src="' + products[prop][i].thumb_url + '" alt="' + products[prop][i].color + ' ' + products[prop][i].name + '"></a>';
-	    		html += '<span class="global_qtyEntry"><input class="global_qtyBox" type="text" name="qty" autocomplete="off" size=2>Qty</span><br>';
+
+	    		html += '<p class="global_callout_caption">';
+				html += '<span class="prodDesc">' + products[prop][i].color + '</span>';
+	    		html += '<span class="prodName">' + products[prop][i].name + '</span>';
+	    		html += '</p>';
+
+	    		// html += '<span class="global_qtyEntry"><input class="global_qtyBox" type="text" name="qty" autocomplete="off" size=2>Qty</span><br>';
+	    		
 	    		html += '<input type="hidden" class="maxQty" value="' + products[prop][i].on_hand + '">';
-	    		html += '<a href="" name="' + products[prop][i].id + '" class="global_addCart_button addCartAction" rel="nofollow">Add</a>';
-	    		html += '<div class="prod_callout_price">';
+	    		html += '<a href="" name="' + products[prop][i].id + '" class="global_addCart_button addCartAction" rel="nofollow" style="margin: 2px 4px 2px 52px;">Add</a>';
+	    		html += '<div class="prod_callout_price prod_callout_price-medium">';
 	    		html += '$<span class="prodPrice">' + formatCurrency(products[prop][i].price) + '</span></div>';
 	    		html += '</div>';
     		}
 
-    		html += '</div></div></div>';
-
 		}
+
+		html += '</div></div></div>';
 
 		document.write(html);
 

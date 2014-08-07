@@ -154,7 +154,7 @@ server.use(express.json());
 
 server.use(express.urlencoded());
 
-server.use(express.bodyParser());
+// server.use(express.bodyParser());
 
 server.use(express.methodOverride());
 

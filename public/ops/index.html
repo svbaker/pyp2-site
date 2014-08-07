@@ -355,12 +355,21 @@
             </p>
 
             <p class="data_form">
+            <label class="data_form" for="prod_fields_display_type">Display Type:</label>
+            <select class="data_form required" id="prod_fields_display_type">
+                <option></option>
+                <option value="SMALL">Small</Option>
+                <option value="MEDIUM">Medium</Option>
+            </select>
+            </p>
+
+            <p class="data_form">
             <label class="data_form" for="prod_fields_size">Size:</label>
             <select multiple size=4 class="data_form required" id="prod_fields_size"></select>
             </p>
 
             <p class="data_form">
-            <label class="data_form" for="prod_fields_color">Color:</label>
+            <label class="data_form" for="prod_fields_color">Color/Desc:</label>
             <input class="data_form required" type="text" id="prod_fields_color">
             </p>
 
@@ -397,7 +406,7 @@
         <!-- Image sizes: 77x122   303x480   606x960  -->
         <div class="form_file_upload_section">
             <p class="data_form">
-                <label class="data_form" for="prod_fields_status">Product Image:<br>(606 x 960)&nbsp;</label>
+                <label class="data_form" for="prod_fields_status">Product Image:<br><span class="img-size-help"></span>&nbsp;</label>
                 <ul id="prodForm_uploads_list" class="form_images-list"></ul>
             </p>
         </div>
@@ -549,8 +558,13 @@
             <hr class="shell_divider">
 
             <p class="data_form">
-            <label class="data_form" for="order_fields_bill_add1">Card Name:</label>
+            <label class="data_form" for="order_fields_card_name">Card Name:</label>
             <span class="displayOnly_data" id="order_fields_card_name"></span>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="order_fields_bill_phone">Phone Number:</label>
+            <span class="displayOnly_data" id="order_fields_bill_phone"></span>
             </p>
 
             <p class="data_form">

@@ -168,7 +168,7 @@ $(document).ready(function() {
                 imgUploadOpts.addFormOnly = true;
 
                 $('#' + ops_function + 'Form_uploads_list').append(genImgUploadHtml(imgUploadOpts));
-
+                
                 UploaderTimerId = setInterval(function() {
                     if($('#' + ops_function + '_userImageInput').val() !== '') {
                         clearInterval(UploaderTimerId);
@@ -838,7 +838,7 @@ var imageUploadSubmitFunction = function() {
 
     // IMPORTANT: FireFox needs to expect JSON response as dataType text for some reason
     $(this).ajaxSubmit({                                                                                                                 
-
+        data: {ACCESS_TOKEN: ACCESS_TOKEN},
         dataType: 'text',
 
         error: function(xhr) {
@@ -910,6 +910,7 @@ var imageUploadSubmitFunction = function() {
         control_code: Code to assocate images with this function/use. Passed to DB
         control_rec_id: DB record ID image is associated with. Passed to DB if supplied
         thumb_size: {width: ###, height: ###}
+        full_size: {width: ###, height: ###}
         addFormOnly: true/false - default is false
 */
 function genImgUploadHtml(opts) {

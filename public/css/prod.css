@@ -74,6 +74,18 @@
 	border-bottom-right-radius: 36px;
 }
 
+.prod-medium_callout {
+	float: left;
+	width: 158px;
+	height: 158px;
+	padding: 6px;
+	background-color: #fff;
+	margin: 0 9px 14px 0;
+	position: relative;
+}
+
+
+
 p.prod_callout_title {
 	display: block;
 	color: #666;
@@ -111,6 +123,11 @@ span.prodName {
 	font-weight: bold;
 	font-style: italic;
 	color: #800;
+}
+
+.prod_callout_price-medium {
+	width: 58px;
+	height: 18px;
 }
 
 .prod_size_container {

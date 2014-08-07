@@ -291,7 +291,14 @@ var orders = {
 				function processCart(line_item) {
 					var isql, vsql, sql;
 					var thisLineItem = post_data.cart.shift();
-					var thisItemDesc = thisLineItem.prodSize + ' ' + thisLineItem.desc + ' ' + thisLineItem.name;
+
+					var thisItemDesc = '';
+
+					if (thisLineItem.prodSize) {
+						thisItemDesc += thisLineItem.prodSize + ' ';
+					}
+
+					thisItemDesc += thisLineItem.desc + ' ' + thisLineItem.name;
 
 					isql = 'INSERT INTO order_detail (';
 					vsql = ' VALUES (';
@@ -553,7 +560,7 @@ var ops = {
 					next();
 				} else {
 					// Invalid token, send back error to client
-					console.log('INVALID ACCESS TOKEN: ' + token);
+					console.log('INVALID ACCESS TOKEN');
 					connection.release();
 					res.send(JSON.stringify({status: 'FAILED', status_text: 'Invalid token.'}));
 					return;
@@ -1728,7 +1735,8 @@ var ops = {
 		var userFiles = [];
 		var uploadedFiles = [];
 
-		console.log('body=' + JSON.stringify(req.body) + '\n\n');
+		// console.log('body=' + JSON.stringify(req.body) + '\n\n');
+		// console.log('ACCESS_TOKEN = ' + req.body.ACCESS_TOKEN);
 
 		console.log('Upload started...');
 
