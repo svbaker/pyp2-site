@@ -121,7 +121,7 @@ function getProducts(cat_code) {
 	    		// html += '<span class="prodDesc">' + products[prop][i].color + '</span>';
 	    		// html += '<span class="prodName">' + products[prop][i].name + '</span></p>';
 	    		
-	    		html += '<a class="fancybox" title="' + products[prop][i].color + '" href="' + products[prop][i].file_url + '">';
+	    		html += '<a class="fancybox" title="' + products[prop][i].color + ' ' + products[prop][i].name + '" href="' + products[prop][i].file_url + '">';
 	    		html += '<img src="' + products[prop][i].thumb_url + '" alt="' + products[prop][i].color + ' ' + products[prop][i].name + '"></a>';
 
 	    		html += '<p class="global_callout_caption">';
