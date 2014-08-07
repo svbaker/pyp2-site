@@ -151,7 +151,10 @@ var CART = {
 
 					if (qty > this.cartItems[i].on_hand) {
 						qty = this.cartItems[i].on_hand;
-						custMsg += this.cartItems[i].prodSize + ' ' + this.cartItems[i].desc + ' ' + this.cartItems[i].name + ' ';
+						if (this.cartItems[i].prodSize) {
+							custMsg += this.cartItems[i].prodSize + ' ';
+						}
+						custMsg += this.cartItems[i].desc + ' ' + this.cartItems[i].name + ' ';
 						custMsg += 'only has ' + this.cartItems[i].on_hand + ' in stock.\n';
 					}
 
