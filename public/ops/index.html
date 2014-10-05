@@ -604,15 +604,18 @@
             </p>
 
             <p class="data_form">
-            <label class="data_form" for="order_fields_card_number">Card:</label>
-            <span class="displayOnly_data" id="order_fields_card_number"></span>
+            <label class="data_form short_form tight" for="order_fields_expires">Expires:</label>
+            <span class="displayOnly_data short_form" id="order_fields_expires"></span>
             </p>
 
             <p class="data_form">
-            <label class="data_form short_form" for="order_fields_ccv">CCV:</label>
-            <span class="data_form displayOnly_data short_form" id="order_fields_ccv"></span>
-            <label class="data_form short_form tight" for="order_fields_expires">Expires:</label>
-            <span class="displayOnly_data short_form" id="order_fields_expires"></span>
+            <label class="data_form" for="order_fields_email">Payment ID:</label>
+            <span class="displayOnly_data" id="order_fields_payment_id"></span>
+            </p>
+
+            <p class="data_form">
+            <label class="data_form" for="order_fields_email">Authorization ID:</label>
+            <span class="displayOnly_data" id="order_fields_auth_id"></span>
             </p>
 
             <hr class="shell_divider">
@@ -629,9 +632,15 @@
             </p>
 
             <div class="form_submit_buttons_container">
-                <a href="#" class="form_button closeForm">Cancel</a>
-                <a href="#" class="form_button postForm"><span class="postFormVerb"></span>&nbsp;order</a><span class="form_status"></span>
+                <a href="#" class="form_button closeForm">Close</a>
+                <a href="#" class="form_button postForm"><span class="postFormVerb"></span>&nbsp;order</a>
+                <a href="#" id="shipOrderButton" class="form_button">Ship</a>
+                <a href="#" id="voidOrderButton" class="form_button">Void</a>
+                <span class="form_status"></span>
             </div>
+
+            <input type="hidden" class="notFormData" id="order_shipData_auth_id" value="">
+            <input type="hidden" class="notFormData" id="order_shipData_total" value="">
 
         </form>
 

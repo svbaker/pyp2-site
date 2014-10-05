@@ -29,6 +29,8 @@ var helpers = require('./site/helpers');
 var server = express();
 
 server.enable('trust proxy');
+
+// Setup Handlebars
 server.set('view engine', 'hbs');
 server.engine('hbs', hbs.express3({  
   defaultLayout: __dirname + '/site/views/layouts/main.hbs',
@@ -36,8 +38,6 @@ server.engine('hbs', hbs.express3({
   layoutsDir: __dirname + '/site/views/layouts'
 }));
 server.set('views', __dirname + '/site/views');
-
-// Load helpers
 helpers.loadSiteHelpers(hbs);
 
 console.log('\n\n-------------------- Node Version: ' + process.version + ' --------------');
@@ -84,6 +84,7 @@ if (fs.existsSync(env_filepath)) {
 		var env_data = JSON.parse(fs.readFileSync(env_filepath));
 		
 		env_settings.dbConnSettings = env_data.db;
+		env_settings.paypalSettings = env_data.paypal;
 		env_settings.emailSettings = env_data.email;
 		env_settings.encryption_key = env_data.encryption_key;
 		env_settings.port = env_data.port;
@@ -137,7 +138,6 @@ var oneDay = 86400000;
 // server.use(breedPage.servePage(__dirname + '/public'));
 
 server.use(middleware.sslRoute(env_settings));
-
 server.use(express.logger({stream: logFile}));
 
 server.use(forceDomain({
@@ -147,26 +147,20 @@ server.use(forceDomain({
 }));
 
 server.use(express.favicon('public/images/favicon.ico'));
-
 server.use(express.compress());
-
 server.use(express.json());
-
 server.use(express.urlencoded());
-
-// server.use(express.bodyParser());
-
 server.use(express.methodOverride());
 
 // Set up routes
 routes.api(server, env_settings);
-routes.site(server);
-routes.sslSite(server);
-
+routes.site(server, env_settings);
+routes.sslSite(server, env_settings);
 server.use(server.router);
 
 server.use(express.static(__dirname + '/public'));
 
+// Still being converted:
 // server.use(photoUploader.contestSubmit(env_settings));
 // server.use(photoUploader.contestEntry(env_settings));
 
@@ -184,7 +178,6 @@ server.use(function(err, req, res, next) {
 	res.render('http-500', context);
 });
 
-// server.listen(env_settings.port);
 http.createServer(server).listen(env_settings.port);
 https.createServer(ssl_options, server).listen(env_settings.sslport);
 

@@ -1,18 +1,27 @@
 var normalized_ccnum;
 var card_type;
+var buttons_suspended = false;
 
 $(document).ready(function() {
 
 	// Continue shopping button
     $('.backNav').click(function(event) {
 		event.preventDefault();
-		backToCart();
+		if (!buttons_suspended) {
+			backToCart();
+		} else {
+			return false;
+		}
     });
 
     $('.placeOrder').click(function(event) {
     	event.preventDefault();
-    	$('#process_order_msgbox').hide();
-    	placeOrder();
+    	if (!buttons_suspended) {
+    		$('#process_order_msgbox').hide();
+    		placeOrder();
+    	} else {
+    		return false;
+    	}
     });
 
 });
@@ -207,6 +216,7 @@ function placeOrder() {
 
 	saveFormChanges();
 
+
 	// Validate basic form elements
 	$('.validated-input').each(function() {
 		var msg_dom_id = '#' + $(this).attr('id') + '-msg';
@@ -317,6 +327,11 @@ function placeOrder() {
 
 function submitToServer() {
 
+	// Put site into wait mode
+	var spinner = ajaxWaitingStatus(document.getElementById('checkoutButtonsRow'));
+	buttons_suspended = true;
+	$('.global_button').addClass('global_button_disable');
+
 	// Load form and cart data into object to be sent to server
 	var formVals = ORDERFORM.form_data;
 
@@ -347,9 +362,13 @@ function submitToServer() {
 		data: {data: JSON.stringify(formVals)},
 		dataType: 'json',
 		jsonp: false, // Work around issue where jQuery replaces ?? in JSON data with timestamp (Ticket #8417)
-		timeout: 10000,
+		timeout: 120000,
 
 		success: function(data) {
+
+			spinner.stop();
+			buttons_suspended = false;
+			$('.global_button').removeClass('global_button_disable');
 
 			if (data.status != 'OK') {
 				alert('There was an problem sending your order to the server, please try again.');
@@ -369,8 +388,41 @@ function submitToServer() {
 		},
 
 		error: function(a, b, c) {
+			spinner.stop();
+			buttons_suspended = false;
+			$('.global_button').removeClass('global_button_disable');
+			
 			alert('There was an problem sending your order to the server, please try again.');
 		}
 	});
 
 }
+
+
+// Create a "waiting spinner" centered in given DOM element
+function ajaxWaitingStatus(locationTarget) {
+    var opts = {
+      lines: 13, // The number of lines to draw
+      length: 12, // The length of each line
+      width: 4, // The line thickness
+      radius: 10, // The radius of the inner circle
+      corners: 1, // Corner roundness (0..1)
+      rotate: 0, // The rotation offset
+      color: '#555', // #rgb or #rrggbb
+      speed: 1, // Rounds per second
+      trail: 60, // Afterglow percentage
+      shadow: false, // Whether to render a shadow
+      hwaccel: false, // Whether to use hardware acceleration
+      className: 'spinner', // The CSS class to assign to the spinner
+      zIndex: 2e9, // The z-index (defaults to 2000000000)
+      top: 'auto', // Top position relative to parent in px
+      left: '440px' // Left position relative to parent in px
+    };
+    
+    var spinner = new Spinner(opts).spin(locationTarget);
+
+    return spinner;
+}
+
+
+

@@ -438,6 +438,15 @@ a.global_callout_link {
 	background-color: #d38f12;
 }
 
+.global_button_disable {
+	background-image: linear-gradient(#aaa, #bbb);
+	background-color: #aaa;
+}
+.global_button_disable:hover {
+	background-image: linear-gradient(#aaa, #bbb);
+	background-color: #aaa;
+}
+
 .global_button_enlarge {
 	font-size: 16px;
 	line-height: 28px;

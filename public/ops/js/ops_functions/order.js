@@ -16,6 +16,74 @@ var ORDER_FUNC = {
 
 		$('#order_filter_order_end_date').datepicker({showButtonPanel: true});
 
+		$('#shipOrderButton').click(function(event) {
+			event.preventDefault();
+
+		    var post_data = {
+		    	auth_id: $('#order_shipData_auth_id').val(),
+		    	total: $('#order_shipData_total').val(),
+		    	ACCESS_TOKEN: ACCESS_TOKEN
+		    };
+
+		    // Post data to server
+		    $.ajax({
+		        url: "/ops/ajax/shipOrder/" + APP_STATE.current_function_form_edit_id,
+		        type: 'POST',
+		        timeout: 120000,
+		        dataType: 'json',
+		        data: {_method: 'put', data: JSON.stringify(post_data)},
+		        jsonp: false,
+
+		        success: function(data) {
+		            if (data.status == 'OK') {
+		                alert('Auth captured');
+		            } else {
+		                alert(data.status_text + ': ' + data.payload.response.message);
+		            }
+
+		        },
+		        error: function(a, b, c) {
+		            alert('Debug warning: Could not reach server capture authorization ' + b);
+		        }
+		    });
+
+			return false;
+		});
+
+		$('#voidOrderButton').click(function(event) {
+			event.preventDefault();
+
+		    var post_data = {
+		    	auth_id: $('#order_shipData_auth_id').val(),
+		    	total: $('#order_shipData_total').val(),
+		    	ACCESS_TOKEN: ACCESS_TOKEN
+		    };
+
+		    // Post data to server
+		    $.ajax({
+		        url: "/ops/ajax/voidOrder/" + APP_STATE.current_function_form_edit_id,
+		        type: 'POST',
+		        timeout: 120000,
+		        dataType: 'json',
+		        data: {_method: 'put', data: JSON.stringify(post_data)},
+		        jsonp: false,
+
+		        success: function(data) {
+		            if (data.status == 'OK') {
+		                alert('Auth voided');
+		            } else {
+		                alert(data.status_text + ': ' + data.payload.response.message);
+		            }
+
+		        },
+		        error: function(a, b, c) {
+		            alert('Debug warning: Could not reach server void authorization ' + b);
+		        }
+		    });
+
+			return false;
+		});
+
 	},
 
 	invoice: function(order_num) {
@@ -71,9 +139,7 @@ var ORDER_FUNC = {
 	            $('#' + $(this).attr('id')).html(thisVal);
 	        });
 
-
 	        // Order detail info
-
 	        $('#ordered_products_table tbody').remove();
 
 	        for (var i = 0; i < order_detail.length; i++) {
@@ -97,7 +163,9 @@ var ORDER_FUNC = {
 
 	        $('#ordered_products_table').append(tableHtml);
 
-
+	        // Shipping function data
+	    	$('#order_shipData_auth_id').val(order_header.auth_id);
+	    	$('#order_shipData_total').val(order_tot.toFixed(2));
 
 	        function formatField(field, val) {
 	        	switch (field) {
@@ -150,7 +218,7 @@ var ORDER_FUNC = {
 	    var post_data = {};
 
 	    // Load each standard field into the post_data object
-	    $('#' + ops_function +'Form').find('input,select,textarea').each(function(i) {
+	    $('#' + ops_function +'Form').find('input,select,textarea').not('.notFormData').each(function(i) {
 	        post_data[$(this).attr('id').slice(ops_function.length + 8)] = $('#' + $(this).attr('id')).val();
 	    });
 
