@@ -5,7 +5,7 @@ var siteHelpers = {};
 siteHelpers.countriesMenu = function (countries) {
 
 	var last_sort1 = 0;
-	var default_val = '228'; // USA
+	var default_val = 'US'; // USA
 	var sel = '';
 
 	var countries_menu = '<optgroup label><option value="">Select Country</option></optgroup>';
@@ -15,13 +15,13 @@ siteHelpers.countriesMenu = function (countries) {
 		if ((countries[i].sort1 == 2) && (last_sort1 == 1)) {
 			countries_menu += '</optgroup><optgroup label="------------">';
 		}
-			if (countries[i].id == default_val) {
+			if (countries[i].code == default_val) {
 				sel = ' SELECTED';
 				default_val = ''; // Only select first match
 			} else {
 				sel = '';
 			}
-		countries_menu += '<option value="' + countries[i].id + '"' + sel + '>' + countries[i].country + '</option>';
+		countries_menu += '<option value="' + countries[i].code + '"' + sel + '>' + countries[i].country + '</option>';
 		last_sort1 = countries[i].sort1;
 	}
 

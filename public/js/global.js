@@ -8,7 +8,7 @@ var localStorageEnabled = false;
 var CART = {
 	cartItems: [], // Hold user's cart items
 
-	united_states_country_code: '228',
+	united_states_country_code: 'US',
 
 	resetCart: function() {
 		this.cartItems.length = 0;

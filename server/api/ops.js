@@ -353,7 +353,7 @@ module.exports = function(env_settings) {
 					sql += ', (SELECT SUM(qty) FROM order_detail od WHERE od.order_num = order_header.order_num) AS qty ';
 					sql += ', order_header.items_total_cost + order_header.shipping_cost AS total ';
 					sql += 'FROM order_header, countries ';
-					sql += 'WHERE countries.id = order_header.country_code ';
+					sql += 'WHERE countries.code = order_header.country_code ';
 
 					for (var prop in post_data.filter_vars) {
 
@@ -964,8 +964,8 @@ module.exports = function(env_settings) {
 				sql = "SELECT oh.*, c.country, c2.country AS bill_country, CONCAT(oh.expire_month, '/', oh.expire_year) AS expires ";
 				sql += 'FROM order_header oh, countries c, countries c2 ';
 				sql += 'WHERE oh.order_num = ' + connection.escape(order_num) + ' ';
-				sql += 'AND c.id = oh.country_code ';
-				sql += 'AND c2.id = oh.bill_country_code';
+				sql += 'AND c.code = oh.country_code ';
+				sql += 'AND c2.code = oh.bill_country_code';
 
 				if (logSQL) {
 					console.log(sql);
@@ -1253,7 +1253,7 @@ module.exports = function(env_settings) {
 				sql = "SELECT oh.*, c.country, CONCAT(oh.expire_month, '/', oh.expire_year) AS expires ";
 				sql += 'FROM order_header oh, countries c ';
 				sql += 'WHERE oh.order_num = ' + connection.escape(order_num) + ' ';
-				sql += 'AND c.id = oh.country_code'
+				sql += 'AND c.code = oh.country_code'
 
 				if (logSQL) {
 					console.log(sql);

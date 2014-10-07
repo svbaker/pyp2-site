@@ -12,8 +12,8 @@ module.exports = function(env_settings) {
 
 			env_settings.connection_pool.getConnection(function(err, connection) {
 
-				sql = "SELECT 1 AS sort1, id, country FROM countries WHERE status='A' AND quick_list='Y' ";
-				sql += "UNION SELECT 2 AS sort1, id, country FROM countries WHERE status='A' ORDER BY sort1, country;";
+				sql = "SELECT 1 AS sort1, code, country FROM countries WHERE status='A' AND quick_list='Y' ";
+				sql += "UNION SELECT 2 AS sort1, code, country FROM countries WHERE status='A' ORDER BY sort1, country;";
 
 				if (logSQL) {
 					console.log(sql);
