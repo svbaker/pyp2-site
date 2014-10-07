@@ -130,7 +130,7 @@ module.exports = function(env_settings) {
 			                    "city": post_data.bill_city,
 			                    "state": post_data.bill_state,
 			                    "postal_code": post_data.bill_zip,
-			                    "country_code": 'US'
+			                    "country_code": post_data.bill_country_code
 			                }
 			            }
 			        }]
@@ -144,7 +144,7 @@ module.exports = function(env_settings) {
 			    }]
 			};
 
-			// console.log('\npayment data: ' + JSON.stringify(payment_json) + '\n');
+			console.log('\npayment data: ' + JSON.stringify(payment_json) + '\n');
 			
 
 			paypal_sdk.payment.create(payment_json, function (err, payment) {
