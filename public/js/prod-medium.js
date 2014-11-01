@@ -66,7 +66,7 @@ $(document).ready(function() {
 });
 
 
-function getProducts(cat_code) {
+function getProducts(cat_code, cat_title) {
 
 	$.ajax({
 		async: false, // Load products into DOM before showing user the page
@@ -99,7 +99,7 @@ function getProducts(cat_code) {
 		}
 
     	html += '<div class="global_header_section" style="margin-top: 20px;">';
-    	html += '<span>Product Selection</span></div>';
+    	html += '<span>' + cat_title + '</span></div>';
 
 		if (prod_cnt < 4) {
 			right_button_class = ' prod_slideButton_Disabled';
@@ -145,7 +145,7 @@ function getProducts(cat_code) {
 		document.write(html);
 
 		// Set display format based on product set
-		if (cat_code == 'CHICKEN-ATTIRE') {
+		if (cat_code == 'xxx') {
 			// This page displays product name as well as color/description
 		} else {
 			// This page does not display product names - just color/decription

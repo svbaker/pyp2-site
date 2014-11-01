@@ -1229,10 +1229,52 @@ module.exports = function(env_settings) {
 							return;
 						}
 
-						connection.release();
-						res.send(JSON.stringify({status: 'OK', status_text: '', payload: {}}));
-						return;
+
+						// Update inventory
+						sql = "SELECT prod_id, qty FROM order_detail ";
+						sql += "WHERE order_num = " + connection.escape(order_num);
+
+						connection.query(sql, function(err, rows, fields) {
+
+							if (err) {
+								errtrack.reportOpsErr(err, res, sql);
+								connection.release();
+								return;
+							}
+
+							processInvUpdate(rows);
+
+							function processInvUpdate(items) {
+								if (items.length == 0) {
+									// Done all order line items
+									connection.release();
+									res.send(JSON.stringify({status: 'OK', status_text: '', payload: {}}));
+									return;
+								}
+
+								var thisItem = items.pop();
+								sql = "UPDATE products SET on_hand = on_hand - " + connection.escape(thisItem.qty);
+								sql += " WHERE id = " + connection.escape(thisItem.prod_id);
+
+								connection.query(sql, function(err, result) {
+
+									if (err) {
+										errtrack.reportOpsErr(err, res, sql);
+										connection.release();
+										return;
+									}
+
+									processInvUpdate(items);
+
+								});
+
+							}
+
+
+						});
+
 					});
+
 				});
 
 			}

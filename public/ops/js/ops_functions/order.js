@@ -19,6 +19,14 @@ var ORDER_FUNC = {
 		$('#shipOrderButton').click(function(event) {
 			event.preventDefault();
 
+			if (buttons_suspended) {
+				return false;
+			}
+
+			$('.form_button').addClass('button_disable');
+			buttons_suspended = true;
+			var spinner = ajaxWaitingStatus(document.getElementById('orderInfo_container'));
+
 		    var post_data = {
 		    	auth_id: $('#order_shipData_auth_id').val(),
 		    	total: $('#order_shipData_total').val(),
@@ -35,14 +43,27 @@ var ORDER_FUNC = {
 		        jsonp: false,
 
 		        success: function(data) {
+
+		        	$('.form_button').removeClass('button_disable');
+		        	buttons_suspended = false;
+		        	spinner.stop();
+
 		            if (data.status == 'OK') {
 		                alert('Auth captured');
+		                $('#shipOrderButton').hide();
+	        			$('#voidOrderButton').hide();
+	        			$('#order_fields_order_status').val('C');
 		            } else {
 		                alert(data.status_text + ': ' + data.payload.response.message);
 		            }
 
 		        },
 		        error: function(a, b, c) {
+
+		        	$('.form_button').removeClass('button_disable');
+		        	buttons_suspended = false;
+		        	spinner.stop();
+
 		            alert('Debug warning: Could not reach server capture authorization ' + b);
 		        }
 		    });
@@ -52,6 +73,14 @@ var ORDER_FUNC = {
 
 		$('#voidOrderButton').click(function(event) {
 			event.preventDefault();
+
+			if (buttons_suspended) {
+				return false;
+			}
+
+			$('.form_button').addClass('button_disable');
+			buttons_suspended = true;
+			var spinner = ajaxWaitingStatus(document.getElementById('orderInfo_container'));
 
 		    var post_data = {
 		    	auth_id: $('#order_shipData_auth_id').val(),
@@ -69,14 +98,27 @@ var ORDER_FUNC = {
 		        jsonp: false,
 
 		        success: function(data) {
+
+		        	$('.form_button').removeClass('button_disable');
+		        	buttons_suspended = false;
+		        	spinner.stop();
+
 		            if (data.status == 'OK') {
 		                alert('Auth voided');
+		                $('#shipOrderButton').hide();
+	        			$('#voidOrderButton').hide();
+	        			$('#order_fields_order_status').val('X');
 		            } else {
-		                alert(data.status_text + ': ' + data.payload.response.message);
+		                alert(data.status_text);
 		            }
 
 		        },
 		        error: function(a, b, c) {
+
+		        	$('.form_button').removeClass('button_disable');
+		        	buttons_suspended = false;
+		        	spinner.stop();
+		        	
 		            alert('Debug warning: Could not reach server void authorization ' + b);
 		        }
 		    });
@@ -138,6 +180,22 @@ var ORDER_FUNC = {
 				thisVal = formatField($(this).attr('id'), thisVal);
 	            $('#' + $(this).attr('id')).html(thisVal);
 	        });
+
+	        // Deal with various order statuses
+	        switch (order_header.order_status) {
+	        	case 'P':
+	        		$('#shipOrderButton').show();
+	        		$('#voidOrderButton').show();
+	        		break;
+	        	case 'C':
+	        		$('#shipOrderButton').hide();
+	        		$('#voidOrderButton').hide();
+	        		break;
+	        	case 'X':
+	        		$('#shipOrderButton').hide();
+	        		$('#voidOrderButton').hide();
+	        		break;
+	        }
 
 	        // Order detail info
 	        $('#ordered_products_table tbody').remove();

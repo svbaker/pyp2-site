@@ -8,11 +8,26 @@ var PROD_FUNC = {
 	init: function() {
 		// Set up function specific event handlers and settings
 		$('#prod_fields_cat_code').change(function() {
+
+			switch ($('#prod_fields_cat_code').val()) {
+				case 'MAGNET':
+				case 'CARD':
+				case 'COUPSIGN':
+				case 'CHICKEN-ATTIRE':
+					$('#prod_fields_display_type').val('MEDIUM');
+					break;
+				default:
+					$('#prod_fields_display_type').val('SMALL');
+			}
+
+			/*
 			if ($('#prod_fields_cat_code').val() == 'MAGNET') {
 				$('#prod_fields_display_type').val('MEDIUM');
 			} else {
 				$('#prod_fields_display_type').val('SMALL');
 			}
+			*/
+
 		});
 	},
 

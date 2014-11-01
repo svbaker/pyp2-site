@@ -83,9 +83,9 @@ exports.site = function(server, env_settings) {
 		res.render('attire', context);
 	});
 
-	server.get('/magnets', function(req, res) {  
-		var context = {title: 'Pampered Poultry - Magnets'};
-		res.render('magnets', context);
+	server.get('/art', function(req, res) {  
+		var context = {title: 'Pampered Poultry - Chicken Art'};
+		res.render('art', context);
 	});
 
 	server.get('/contact-us', function(req, res) {  

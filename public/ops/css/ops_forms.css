@@ -1,4 +1,4 @@
-/* Edit and Add Form styles  */
+ƒ/* Edit and Add Form styles  */
 
 .func_title {
     font-weight: bold;
@@ -141,6 +141,15 @@ input.form_pick_list {
     background-color: #d38f12;
 }
 
+.button_disable {
+    background-image: linear-gradient(#aaa, #bbb);
+    background-color: #aaa;
+}
+.button_disable:hover {
+    background-image: linear-gradient(#aaa, #bbb);
+    background-color: #aaa;
+}
+
 .small_delete_button {
     background-color: #a00;
     border-radius: 2px;
@@ -181,9 +190,8 @@ li.sublist {
 .form_submit_buttons_container {
     clear: both;
     width: 100%;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: center;
+    text-align: left;
+    padding: 12px 0 12px 180px;
 }
 
 

@@ -3,6 +3,8 @@ var APP_STATE;
 var ACCESS_TOKEN;
 var UploaderTimerId;
 
+var buttons_suspended = false;
+
 $(document).ready(function() {
 
     ACCESS_TOKEN = localStorage.getItem('token');
@@ -109,6 +111,11 @@ $(document).ready(function() {
     // Close form button
     $('.closeForm').click(function(event) {
         event.preventDefault();
+
+        if (buttons_suspended) {
+            return false;
+        }
+
         close_form(APP_STATE.current_function);
     });
 
@@ -207,6 +214,11 @@ $(document).ready(function() {
                 break;
 
             case 'order':
+
+                if (buttons_suspended) {
+                    return false;
+                }
+
                 ORDER_FUNC.postForm();
                 break;
         }
