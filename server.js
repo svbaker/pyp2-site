@@ -13,7 +13,7 @@ var fs = require('fs');
 // var photoUploader = require('photoUploader');
 
 var url = require('url');
-var errtrack = require('./server/util/errtrack');
+var errtrack = require('./server/util/errTrack.js');
 var mysql = require('mysql');
 var forceDomain = require('node-force-domain');
 var middleware = require('./server/middleware');
