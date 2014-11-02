@@ -175,3 +175,10 @@ span.prodName {
 	-webkit-border-bottom-right-radius: 36px;
 	border-bottom-right-radius: 36px;
 }
+
+.catTagline {
+	font-size: 14px !important;
+	font-style: italic;
+	line-height: 16px;
+	vertical-align: text-bottom;
+}

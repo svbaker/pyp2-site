@@ -66,7 +66,7 @@ $(document).ready(function() {
 });
 
 
-function getProducts(cat_code, cat_title) {
+function getProducts(cat_code, cat_title, cat_desc) {
 
 	$.ajax({
 		async: false, // Load products into DOM before showing user the page
@@ -99,7 +99,7 @@ function getProducts(cat_code, cat_title) {
 		}
 
     	html += '<div class="global_header_section" style="margin-top: 20px;">';
-    	html += '<span>' + cat_title + '</span></div>';
+    	html += '<span>' + cat_title + '</span><span class="catTagline"> - ' + cat_desc + '</span></div>';
 
 		if (prod_cnt < 4) {
 			right_button_class = ' prod_slideButton_Disabled';
