@@ -73,10 +73,10 @@ $(document).ready(function() {
 		CART.cartItems.push({
 			prod_id: prod_id,
 			qty: 1,
-			name: 'Dress Set',
+			name: 'Chicken Diaper',
 			prodSize: size,
-			desc: 'Golden Gala',
-			price: 24.95,
+			desc: 'Christmas Tree',
+			price: 14.95,
 			on_hand: 1
 		});
 
