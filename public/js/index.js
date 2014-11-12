@@ -57,16 +57,16 @@ $(document).ready(function() {
 
 		switch (size) {
 			case 'Large':
-				prod_id = 6;
+				prod_id = 179;
 				break;
 			case 'Medium':
-				prod_id = 11;
+				prod_id = 180;
 				break;
 			case 'Small':
-				prod_id = 17;
+				prod_id = 181;
 				break;
 			case 'X-Small':
-				prod_id = 64;
+				prod_id = 182;
 				break;
 		}
 
