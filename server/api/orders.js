@@ -150,7 +150,7 @@ module.exports = function(env_settings) {
 			paypal_sdk.payment.create(payment_json, function (err, payment) {
 
 			    if (err) {
-			        console.log(JSON.stringify(err));
+			        console.log('PAYPAL ERROR: ' + JSON.stringify(err));
 			        res.send(JSON.stringify({status: 'ERROR', status_text: 'We were not able to process your payment.', payload: err}));
 					return;
 

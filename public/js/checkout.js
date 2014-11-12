@@ -188,7 +188,7 @@ function localInitFunc() {
 
     // Hide validation message when user moves to address issue
 	$('body').on('focus', '.validated-input,.stateField-input', function() {
-		$('#process_order_msgbox').hide(300);
+		$('.validation_message').hide(300);
 	});
 
 
@@ -371,7 +371,10 @@ function submitToServer() {
 			$('.global_button').removeClass('global_button_disable');
 
 			if (data.status != 'OK') {
-				alert('There was an problem sending your order to the server, please try again.');
+				// alert('There was an problem sending your order to the server, please try again.');
+
+				$('#process_charge_msgbox').show(300);
+
 				return false;
 			}
 
