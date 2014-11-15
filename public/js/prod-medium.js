@@ -98,8 +98,8 @@ function getProducts(cat_code, cat_title, cat_desc) {
 			prod_cnt += products[prop].length;
 		}
 
-    	html += '<div class="global_header_section" style="margin-top: 20px;">';
-    	html += '<span>' + cat_title + '</span><span class="catTagline"> - ' + cat_desc + '</span></div>';
+    	html += '<div class="global_header_section" style="margin-top: 20px; padding-left: 8px;">';
+    	html += '<span style="padding-left: 0;">' + cat_title + '</span><span class="catTagline"> - ' + cat_desc + '</span></div>';
 
 		if (prod_cnt < 4) {
 			right_button_class = ' prod_slideButton_Disabled';
@@ -112,22 +112,11 @@ function getProducts(cat_code, cat_title, cat_desc) {
 		html += '<div class="prod_slideButton prod_slideButtonRight' + right_button_class + '"><span title="See more chocies" class="prod_chevron_right"></span></div>';
 		html += '<div class="prod_slide_container"><div class="prod_slider">';
 
-		var calloutStyle;
-		if  (cat_code == 'CARD') {
-			calloutStyle = ' style="background-color: #cce0d0;"';
-		} else {
-			calloutStyle = '';
-		}
-
 		for(var prop in products) {
 
     		for (var i = 0; i < products[prop].length; i++) {
-	    		html += '<div' + calloutStyle + ' class="prod-medium_callout" id="prodID_' + products[prop][i].id + '">';
+	    		html += '<div class="prod-medium_callout" id="prodID_' + products[prop][i].id + '">';
 
-	    		// html += '<p class="prod_callout_title"><span class="prodSize">' + prop + '</span>';
-	    		// html += '<span class="prodDesc">' + products[prop][i].color + '</span>';
-	    		// html += '<span class="prodName">' + products[prop][i].name + '</span></p>';
-	    		
 	    		html += '<a class="fancybox" title="' + products[prop][i].color + ' ' + products[prop][i].name + '" href="' + products[prop][i].file_url + '">';
 	    		html += '<img src="' + products[prop][i].thumb_url + '" alt="' + products[prop][i].color + ' ' + products[prop][i].name + '"></a>';
 
@@ -135,8 +124,6 @@ function getProducts(cat_code, cat_title, cat_desc) {
 				html += '<span class="prodDesc">' + products[prop][i].color + '</span>';
 	    		html += '<span class="prodName">' + products[prop][i].name + '</span>';
 	    		html += '</p>';
-
-	    		// html += '<span class="global_qtyEntry"><input class="global_qtyBox" type="text" name="qty" autocomplete="off" size=2>Qty</span><br>';
 	    		
 	    		html += '<input type="hidden" class="maxQty" value="' + products[prop][i].on_hand + '">';
 	    		html += '<a href="" name="' + products[prop][i].id + '" class="global_addCart_button addCartAction" rel="nofollow" style="margin: 2px 4px 2px 52px;">Add</a>';
