@@ -112,10 +112,17 @@ function getProducts(cat_code, cat_title, cat_desc) {
 		html += '<div class="prod_slideButton prod_slideButtonRight' + right_button_class + '"><span title="See more chocies" class="prod_chevron_right"></span></div>';
 		html += '<div class="prod_slide_container"><div class="prod_slider">';
 
+		var calloutStyle;
+		if  (cat_code == 'CARD') {
+			calloutStyle = ' style="background-color: #cce0d0;"';
+		} else {
+			calloutStyle = '';
+		}
+
 		for(var prop in products) {
 
     		for (var i = 0; i < products[prop].length; i++) {
-	    		html += '<div class="prod-medium_callout" id="prodID_' + products[prop][i].id + '">';
+	    		html += '<div' + calloutStyle + ' class="prod-medium_callout" id="prodID_' + products[prop][i].id + '">';
 
 	    		// html += '<p class="prod_callout_title"><span class="prodSize">' + prop + '</span>';
 	    		// html += '<span class="prodDesc">' + products[prop][i].color + '</span>';
