@@ -138,6 +138,7 @@ var oneDay = 86400000;
 // server.use(breedPage.servePage(__dirname + '/public'));
 
 server.use(middleware.sslRoute(env_settings));
+server.use(middleware.oldsiteRedirector(env_settings));
 server.use(express.logger({stream: logFile}));
 
 server.use(forceDomain({

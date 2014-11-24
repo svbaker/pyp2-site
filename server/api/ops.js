@@ -1091,6 +1091,7 @@ module.exports = function(env_settings) {
 			};
 
 			console.log('Capture Auth ' + post_data.auth_id);
+			console.log('\nCapture JSON ' + JSON.stringify(capture_json));
 
 			paypal_sdk.authorization.capture(post_data.auth_id, capture_json, function (err, capture) {
 
