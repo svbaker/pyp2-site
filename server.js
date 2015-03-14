@@ -122,11 +122,11 @@ if (fs.existsSync(env_filepath)) {
 // Set up SSL
 var hskey = fs.readFileSync(ssl_filepath + 'key.pem');
 var hscert = fs.readFileSync(ssl_filepath + 'cert.pem');
-// var hsca = fs.readFileSync(ssl_filepath + 'ca.pem');
+var hsca = fs.readFileSync(ssl_filepath + 'ca.pem');
 
-var ca1 = fs.readFileSync(ssl_filepath + 'ca1.pem');
-var ca2 = fs.readFileSync(ssl_filepath + 'ca2.pem');
-var hsca = [ca1, ca2];
+// var ca1 = fs.readFileSync(ssl_filepath + 'ca1.pem');
+//var ca2 = fs.readFileSync(ssl_filepath + 'ca2.pem');
+// var hsca = [ca1, ca2];
 
 var ssl_options = {
 	key: hskey,
