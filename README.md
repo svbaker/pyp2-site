@@ -1,9 +1,6 @@
 # pyp2-site
 Pamper Your Poultry site version 2
 
-pyp2-site
-========
-
 **Pampered Poultry Node.js e-commerce site**
 
 This repository exists as a reference for my tech blog on implementing Node.js / HTML web sites. A live production implementation of this site can be seen at:
