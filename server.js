@@ -1,4 +1,4 @@
-// Pamperyourpoultry,com Version 2.0
+// Pamperyourpoultry.com Version 2.0
 // Sean V. Baker - sean.baker@bb-technologies.com
 
 var http = require("http");
@@ -124,10 +124,6 @@ var hskey = fs.readFileSync(ssl_filepath + 'key.pem');
 var hscert = fs.readFileSync(ssl_filepath + 'cert.pem');
 var hsca = fs.readFileSync(ssl_filepath + 'ca.pem');
 
-// var ca1 = fs.readFileSync(ssl_filepath + 'ca1.pem');
-//var ca2 = fs.readFileSync(ssl_filepath + 'ca2.pem');
-// var hsca = [ca1, ca2];
-
 var ssl_options = {
 	key: hskey,
 	cert: hscert,
@@ -139,8 +135,6 @@ var oneDay = 86400000;
 
 
 // EXPRESS -------
-
-// server.use(breedPage.servePage(__dirname + '/public'));
 
 server.use(middleware.sslRoute(env_settings));
 server.use(middleware.oldsiteRedirector(env_settings));
@@ -166,7 +160,7 @@ server.use(server.router);
 
 server.use(express.static(__dirname + '/public'));
 
-// Still being converted:
+// Still to be converted:
 // server.use(photoUploader.contestSubmit(env_settings));
 // server.use(photoUploader.contestEntry(env_settings));
 
