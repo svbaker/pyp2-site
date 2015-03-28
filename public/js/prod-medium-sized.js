@@ -110,15 +110,6 @@ function getProducts(cat_code) {
 
     		for (var i = 0; i < products[prop].length; i++) {
 	    		html += '<div class="prod-medium_callout" id="prodID_' + products[prop][i].id + '">';
-
-
-	    		/*
-	    		html += '<p class="prod_callout_title"><span class="prodSize">' + prop + '</span>';
-	    		html += '<span class="prodDesc">' + products[prop][i].color + '</span>';
-	    		html += '<span class="prodName">' + products[prop][i].name + '</span></p>';
-				*/
-
-	    		
 	    		html += '<a class="fancybox" title="' + prop + '-' + products[prop][i].color + '" href="' + products[prop][i].file_url + '">';
 	    		html += '<img src="' + products[prop][i].thumb_url + '" alt="' + products[prop][i].color + ' ' + products[prop][i].name + '"></a>';
 	    		
@@ -127,24 +118,11 @@ function getProducts(cat_code) {
 	    		html += '<span class="prodName">' + products[prop][i].name + '</span>';
 	    		html += '</p>';
 
-
-	    		/*
-	    		html += '<span class="global_qtyEntry"><input class="global_qtyBox" type="text" name="qty" autocomplete="off" size=2>Qty</span><br>';
-	    		html += '<input type="hidden" class="maxQty" value="' + products[prop][i].on_hand + '">';
-	    		html += '<a href="" name="' + products[prop][i].id + '" class="global_addCart_button addCartAction" rel="nofollow">Add</a>';
-	    		html += '<div class="prod_callout_price">';
-	    		html += '$<span class="prodPrice">' + formatCurrency(products[prop][i].price) + '</span></div>';
-	    		html += '</div>';
-				*/
-
 	    		html += '<input type="hidden" class="maxQty" value="' + products[prop][i].on_hand + '">';
 	    		html += '<a href="" name="' + products[prop][i].id + '" class="global_addCart_button addCartAction" rel="nofollow" style="margin: 2px 4px 2px 52px;">Add</a>';
 	    		html += '<div class="prod_callout_price prod_callout_price-medium">';
 	    		html += '$<span class="prodPrice">' + formatCurrency(products[prop][i].price) + '</span></div>';
 	    		html += '</div>';
-
-
-
     		}
 
     		html += '</div></div></div>';

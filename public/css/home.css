@@ -1,0 +1,99 @@
+.home_pyp_logo {
+	display: block;
+	float: left;
+	width: 78px;
+	height: 78px;
+	margin: 10px 12px 0 6px;
+}
+
+.home_welcome {
+	margin: 8px 10px;
+}
+
+.home_welcome_signoff {
+	clear: both;
+	margin: 18px 3px 18px 292px;
+	position: relative;
+}
+
+.home_welcome_sig {
+	display: block;
+	position: absolute;
+	top: 2px;
+	left: -140px;
+	width: 122px;
+	height: 30px;
+}
+
+.home_feat_story {
+	display: block;
+	width: 154px;
+	height: 122px;
+	margin-bottom: 2px;
+}
+.home_feat_prod {
+	display: block;
+	width: 76px;
+	height: 112px;
+	margin-bottom: 2px;
+	float: left;
+}
+.home_feat_prod_sizepicker {
+	background-color: #fcc;
+	margin: 15px 0;
+	float: right;
+}
+
+.home_feat_prod_lrg_sizepicker {
+	margin: 5px 0;
+}
+.home_feat_prod_lrg_sizepicker span {
+	font-style: italic; padding-right: 6px;
+}
+
+.home_prod_price {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 72px;
+	height: 26px;
+	font-size: 14px;
+	font-weight: bold;
+	font-style: italic;
+	color: #800;
+}
+
+.home_price_lrg {
+	bottom: 0;
+	right: 12px;
+	width: 85px;
+}
+
+.home_feat_prod_large {
+	display: block;
+	width: 154px;
+	height: 122px;
+	margin: 0 8px 2px 0;
+	float: left;
+}
+
+.home_feat_prod_lrg_txt {
+	margin: 0 6px 4px;
+}
+
+.home_section_divider {
+	margin-top: 20px;
+}
+.home_calloutwide_photo {
+	display: block;
+	float: left;
+	width: 154px;
+	height: 154px;
+	margin: 0 8px 2px 0;
+}
+.home_rightcallout {
+	margin-right: 0;
+}
+.home_callout_title {
+	padding-bottom: 4px;
+}

@@ -20,14 +20,6 @@ var PROD_FUNC = {
 					$('#prod_fields_display_type').val('SMALL');
 			}
 
-			/*
-			if ($('#prod_fields_cat_code').val() == 'MAGNET') {
-				$('#prod_fields_display_type').val('MEDIUM');
-			} else {
-				$('#prod_fields_display_type').val('SMALL');
-			}
-			*/
-
 		});
 	},
 
@@ -310,8 +302,5 @@ var PROD_FUNC = {
 
 
 };
-
-
-
 
 

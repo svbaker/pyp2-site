@@ -39,7 +39,6 @@ $(document).ready(function() {
 				if (directionMult == 1) {
 					if (cur_slider_index == 0) {
 						thisLeftButton.addClass('prod_slideButton_Disabled');
-
 					}
 				} else {
 					if (cur_slider_index > (tot_slider_cnt - 4)) {

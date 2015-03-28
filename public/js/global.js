@@ -6,7 +6,7 @@ var localStorageEnabled = false;
 //     Intl: flat $7.95 + $1 per each additional item
 //     Note: shipping rates here must match rates used by back-end server calculation
 var CART = {
-	cartItems: [], // Hold user's cart items
+	cartItems: [], // Hold customer's cart items
 
 	united_states_country_code: 'US',
 
@@ -61,7 +61,6 @@ var CART = {
 			$('.global_menuCart').hide();
 		}
 
-		// Save cart state
 		this.saveCartState();
 
 		window.scrollTo(0, 0);
@@ -259,7 +258,6 @@ $(document).ready(function() {
 	ORDERFORM.getState();
 	ORDERFORM.loadCartPageDOM();
 
-
 	// Get cart from cookies
 	CART.getState();
 
@@ -270,12 +268,6 @@ $(document).ready(function() {
 	if (typeof(localInitFunc) == "function") {
 		localInitFunc();
 	}
-
-	/*
-	$('#global_header_logo').click(function() {
-		window.location.href = thisSiteFullurl;
-	});
-	*/
 
 	$('.homelink').click(function(event) {
 		event.preventDefault();

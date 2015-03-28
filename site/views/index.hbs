@@ -1,5 +1,9 @@
 {{!< main}}
 
+{{#contentFor 'localstyles'}}
+<link rel="stylesheet" href="/css/home.css" type="text/css">
+{{/contentFor}}
+
 {{#contentFor 'localscripts'}}
 <script type="text/javascript" src="/js/index.js" ></script>
 {{/contentFor}}
@@ -11,48 +15,44 @@
 		</div>
 
 		<div class="global_section">
-			<img src="/images/site/logo.png" style="display: block; float: left; width: 78px; height: 78px; ; margin: 10px 12px 0 6px;" alt="Pampered Poultry Logo">
-			<p class="global_contentbox_text" style="margin: 8px 10px;">
+			<img src="/images/site/logo.png" class="home_pyp_logo" alt="Pampered Poultry Logo">
+			<p class="global_contentbox_text home_welcome">
 			Welcome to Pampered Poultry, promoting the fashionable backyard chicken. We love our chickens, and know you do too! Browse our site of designer chicken attire that is both stylish and comfortable. Have fun, knowing you are in the company of friends who all Pamper their Poultry.</p>
-			<div style="clear: both; margin: 18px 3px 18px 292px; position: relative;">
-				<a href="/images/site/julie_baker.jpg" target="_blank"><img src="/images/site/julie_baker.png" style="width: 159px; height: 159px;" alt="Julie Baker"></a>
-				<img style="display: block; position: absolute; top: 2px; left: -140px; width: 122px; height: 30px;" src="/images/site/julie_baker_text.png" alt="Julie Baker">
+			<div class="home_welcome_signoff">
+				<a href="/images/site/julie_baker.jpg" target="_blank"><img src="/images/site/julie_baker.png" width=159 height=159 alt="Julie Baker"></a>
+				<img class="home_welcome_sig" src="/images/site/julie_baker_text.png" alt="Julie Baker">
 			</div>
 		</div>
 
 		<div class="global_callout">
-			<a href="http://www.wmur.com/new-hampshire-chronicle/Thursday-November-22nd-pamper-your-poultry/-/13383450/17426390/-/14gq7pl/-/index.html"><img src="/images/site/callouts/NH_Chronicle.jpg" style="display: block; width: 154px; height: 122px; margin-bottom: 2px;"></a>
+			<a href="http://www.wmur.com/new-hampshire-chronicle/Thursday-November-22nd-pamper-your-poultry/-/13383450/17426390/-/14gq7pl/-/index.html"><img class="home_feat_story" src="/images/site/callouts/NH_Chronicle.jpg"></a>
 			<p class="global_callout_caption">Featured on NH Chronicle</p>
 			<a href="http://www.wmur.com/new-hampshire-chronicle/Thursday-November-22nd-pamper-your-poultry/-/13383450/17426390/-/14gq7pl/-/index.html" class="global_callout_link">Watch video</a>
 		</div>
 
 		<div class="global_callout">
-			<a href="http://www.npr.org/blogs/thesalt/2013/04/30/180135026/chicken-diapers-urban-farming-spawns-accessory-lines"><img src="/images/site/callouts/the_salt.png" style="display: block; width: 154px; height: 122px; margin-bottom: 2px;" alt="NPR Blog link"></a>
+			<a href="http://www.npr.org/blogs/thesalt/2013/04/30/180135026/chicken-diapers-urban-farming-spawns-accessory-lines"><img class="home_feat_story" src="/images/site/callouts/the_salt.png" alt="NPR Blog link"></a>
 			<p class="global_callout_caption">Highlighted in NPR Blog</p>
 			<a href="http://www.npr.org/blogs/thesalt/2013/04/30/180135026/chicken-diapers-urban-farming-spawns-accessory-lines" class="global_callout_link">Read the blog post</a>
 		</div>
 
-		<div class="global_callout" style="margin-right: 0;">
-			<a href="http://www.wcax.com/story/22535877/chicken"><img src="/images/site/callouts/wcax.jpg" style="display: block; width: 154px; height: 122px; margin-bottom: 2px;" alt="Watch channel 3 video"></a>
+		<div class="global_callout home_rightcallout">
+			<a href="http://www.wcax.com/story/22535877/chicken"><img src="/images/site/callouts/wcax.jpg" class="home_feat_story" alt="Watch channel 3 video"></a>
 			<p class="global_callout_caption">Abigail's TV debut in VT</p>
 			<a href="http://www.wcax.com/story/22535877/chicken" class="global_callout_link">Watch video</a>
 		</div>
 
 		<div class="global_clearfix"></div>
 
-
-
-		<div class="global_header_section" style="margin-top: 20px;">
+		<div class="global_header_section home_section_divider">
 			<span>Featured Products</span>
 		</div>
 		<div class="global_clearfix"></div>
 
-
-
 		<div class="prod_featured_callout">
 			<p class="prod_callout_title">Christmas Tree<br>Holiday Diaper</p>
-			<a class="fancybox" title="Christmas Tree Holiday Diaper" href="/images/site/products/5hx2.png"><img src="/images/site/products/5hx2_thumb.png" style="display: block; width: 76px; height: 112px; margin-bottom: 2px; float: left;" alt="Christmas Tree Holiday Diaper"></a>
-			<div style="background-color: #fcc; margin: 15px 0; float: right;">
+			<a class="fancybox" title="Christmas Tree Holiday Diaper" href="/images/site/products/5hx2.png"><img src="/images/site/products/5hx2_thumb.png" class="home_feat_prod" alt="Christmas Tree Holiday Diaper"></a>
+			<div class="home_feat_prod_sizepicker">
 				<select id="SPEC_christmas_size">
 					<option value="">Size</option>
 					<option>Large</option>
@@ -62,17 +62,17 @@
 				</select>
 			</div>
             <a href="#" id="christmasAddButton" class="global_addCart_button" rel="nofollow">Add</a>
-            <div style="position: absolute; bottom: 0; right: 0; width: 72px; height: 26px; font-size: 14px; font-weight: bold; font-style: italic; color: #800;">
+            <div class="home_prod_price">
 				$14.95
 			</div>
 		</div>
 
 		<div class="prod_callout_doublewide">
-			<p class="prod_callout_title" style="padding-bottom: 4px;">Feather Guard Flock Pack</p>
-			<a class="fancybox" title="Feather Guard Flock Pack" href="/images/site/featured/featherguard_flockpack.png"><img src="/images/site/featured/featherguard_flockpack_thumb.png" style="display: block; width: 154px; height: 122px; margin: 0 8px 2px 0; float: left;" alt="Feather Guard Flock Pack"></a>
-			<div style="margin: 0 6px 4px; 0;">Have a flock to protect? Help your hen’s feathers grow back and prevent further damage with our Flock Pack. Six assorted saddles- you pick the size, we pick the colors.</div>
-			<div style="margin: 5px 0;">
-				<span style="font-style: italic; padding-right: 6px;">Size:</span>
+			<p class="prod_callout_title home_callout_title">Feather Guard Flock Pack</p>
+			<a class="fancybox" title="Feather Guard Flock Pack" href="/images/site/featured/featherguard_flockpack.png"><img src="/images/site/featured/featherguard_flockpack_thumb.png" class="home_feat_prod_large" alt="Feather Guard Flock Pack"></a>
+			<div class="home_feat_prod_lrg_txt">Have a flock to protect? Help your hen’s feathers grow back and prevent further damage with our Flock Pack. Six assorted saddles- you pick the size, we pick the colors.</div>
+			<div class="home_feat_prod_lrg_sizepicker">
+				<span>Size:</span>
 				<select id="SPEC_flockpack_size">
 					<option value="">Select a size</option>
 					<option>Large</option>
@@ -82,28 +82,24 @@
 				</select>
 			</div>
             <a href="#" id="flockPackAddButton" class="global_addCart_button" rel="nofollow">Add</a>
-			<div style="position: absolute; bottom: 0; right: 12px; width: 85px; height: 26px; font-size: 14px; font-weight: bold; font-style: italic; color: #800;">
+			<div class="home_prod_price home_price_lrg">
 				Only $38!
 			</div>
 		</div>
-
-
-
-
 		<div class="global_clearfix">&nbsp;</div>
+
 		<div class="global_callout_wide">
-			<img src="/images/site/callouts/chicken.png" style="display: block; float: left; width: 154px; height: 154px; margin: 0 8px 2px 0;" alt="Chicken photo">
+			<img src="/images/site/callouts/chicken.png" class="home_calloutwide_photo" alt="Chicken photo">
 			<p><a href="http://www.farmdreamer.blogspot.com/2012_11_01_archive.html">Why Pampered Poultry?</a></p>
 			<p class="global_callout_wide_caption">The most common question I'm asked is, &quot;do chickens really wear diapers?&quot; When I respond, &quot;yes&quot;, the obvious follow-up question is, &quot;Why?&quot;</p>
 			<p class="global_callout_wide_caption-more"><a href="http://www.farmdreamer.blogspot.com/2012_11_01_archive.html">Read more</a></p>
 		</div>
 
-		<div class="global_callout" style="margin-right: 0;">
-			<a href="http://www.sewingmyfuture.org"><img src="/images/site/callouts/smf_callout.png" style="display: block; width: 154px; height: 122px; margin-bottom: 2px;" alt="Sewing My Future photo"></a>
+		<div class="global_callout home_rightcallout">
+			<a href="http://www.sewingmyfuture.org"><img src="/images/site/callouts/smf_callout.png" class="home_feat_story" alt="Sewing My Future photo"></a>
 			<p class="global_callout_caption">How the diapers are made</p>
 			<a href="http://www.sewingmyfuture.org" class="global_callout_link">Sewing My Future</a>
 		</div>
-
 		<div class="global_clearfix"></div>
 
 	</div>

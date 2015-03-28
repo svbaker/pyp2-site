@@ -46,7 +46,6 @@ siteHelpers.statesMenu = function (states) {
 };
 
 
-
 siteHelpers.breedsMenu = function (breeds) {
 
 	var last_class = '';
@@ -66,9 +65,6 @@ siteHelpers.breedsMenu = function (breeds) {
 
 	return new hbs.SafeString(breeds_menu);
 };
-
-
-
 
 
 registerHelpers = function (siteHbs) {

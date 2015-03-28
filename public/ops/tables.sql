@@ -1,7 +1,3 @@
-/*
-Backup:
-sudo mysqldump -u root -p pyp > /home/azureuser/bu/pyp_8_31.sql
-*/
 
 /* catalog tables */
 CREATE TABLE products (
@@ -253,12 +249,6 @@ CREATE TABLE ops_sessions (
      logins           int           NOT NULL  DEFAULT 0
 );
 
-INSERT INTO ops_users (userid, password, name, email) VALUES ('sean','brak','Sean','sean@pamperyourpoultry.com');
-INSERT INTO ops_users (userid, password, name, email) VALUES ('julie','katina33','Julie','julie@pamperyourpoultry.com');
-INSERT INTO ops_users (userid, password, name, email) VALUES ('bridget','thyra','Bridget','bridget@pamperyourpoultry.com');
-
-
-INSERT INTO ops_users (userid, password, name, email) VALUES ('peter','test','Peter','peter@pamperyourpoultry.com');
 
 /* ---- For photo uploader ------- */
 CREATE TABLE posts (
@@ -318,11 +308,6 @@ PRIMARY KEY(id)
 );
 
 
-
-/* Backup single tables */
-/* mysqldump -u root -p pyp breeds > /home/azureuser/breeds.sql */
-/* mysqldump -u root -p pyp breed_plumage > /home/azureuser/breed_plumage.sql */
-/* mysqldump -u root -p pyp breed_plumage_map > /home/azureuser/breed_plumage_map.sql */
 
 
 CREATE TABLE countries (
